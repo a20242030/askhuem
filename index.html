@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>askhuem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+.menu {
+    font-size: 10px; /* حجم الخط للقائمة بشكل عام */
+}
+
+.menu a {
+    font-size: 12px; /* حجم الخط لعناصر القائمة */
+    padding: 5px; /* إضافة بعض الحشوة لعناصر القائمة */
+}
+
+.burger {
+    font-size: 10px; /* حجم زر البرجر */
+}
+
+
+
+        body {
+            background-color: #121212; /* لون الخلفية */
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            position: relative;
+            min-height: 100vh;
+            overflow: hidden; /* لمنع التمرير */
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+        p {
+            font-size: 20px;
+            margin: 20px 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6; /* لتحسين قراءة النص */
+        }
+        .button {
+            background-color: #ffffff; 
+            color: #000000;
+            border: 2px solid #000000;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            margin-top: 20px; /* لزيادة المسافة بين الزر والنص */
+        }
+        .button:hover {
+            background-color: #000000; 
+            color: #ffffff;
+        }
+        .burger {
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 24px; /* جعل الخط أصغر */
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+        }
+        .menu {
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            position: absolute;
+            top: 70px;
+            left: 20px;
+            background-color: rgba(18, 18, 18, 0.9);
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            z-index: 9;
+        }
+        .menu a {
+            margin: 10px 0;
+        }
+        .menu.show {
+            display: flex;
+        }
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        .whatsapp-icon {
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>AskHuem</h1>
+    <p>آسك هيوم هو مرجع لمنتجات هيوم تتيح للمستخدم الرد على الأسئلة الشائعة المتعلقة بالتركيب واستطلاع دليل المستخدم للمنتجات.</p>
+
+
+    <button class="burger" onclick="toggleMenu()">☰</button>
+    
+    <div class="menu" id="menu">
+        <a href="about.html" class="button">حول هيوم</a>
+        <a href="products.html" class="button">المنتجات</a>
+    </div>
+
+    <a href="https://wa.me/1234567890" class="whatsapp-button" title="تواصل عبر واتساب">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="واتساب" class="whatsapp-icon">
+    </a>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

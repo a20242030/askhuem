@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المنتجات - askhuem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+
+.menu {
+    font-size: 10px; /* حجم الخط للقائمة بشكل عام */
+}
+
+.menu a {
+    font-size: 12px; /* حجم الخط لعناصر القائمة */
+    padding: 5px; /* إضافة بعض الحشوة لعناصر القائمة */
+}
+
+.burger {
+    font-size: 7px; /* حجم زر البرجر */
+}
+
+
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            position: relative;
+            min-height: 100vh;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        .search-input {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .burger {
+            background: none;
+            border: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .menu {
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            position: absolute;
+            top: 60px;
+            left: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 10;
+        }
+        .menu a {
+            margin: 5px 0;
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .products-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .product {
+            margin: 10px;
+            border: 1px solid #ffffff;
+            border-radius: 8px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: calc(33% - 20px);
+        }
+        .product:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+        img {
+            width: 100%;
+            max-width: 150px;
+            border-radius: 8px;
+        }
+        .description {
+            display: none;
+            margin-top: 5px;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #070707;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin: 5px;
+        }
+        .btn:hover {
+            background-color: #5a5858;
+        }
+    </style>
+    <script>
+        function toggleDescription(descId) {
+            const description = document.getElementById(descId);
+            description.style.display = description.style.display === "none" || description.style.display === "" ? "block" : "none";
+        }
+
+        function searchProducts() {
+            const input = document.getElementById('search-input').value.toLowerCase();
+            const products = document.querySelectorAll('.product');
+            products.forEach(product => {
+                const title = product.querySelector('h2').textContent.toLowerCase();
+                product.style.display = title.includes(input) ? 'inline-block' : 'none';
+            });
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        }
+    </script>
+</head>
+<body>
+    <button class="burger" onclick="toggleMenu()">☰</button>
+    
+    <div class="menu" id="menu">
+        <a href="about.html" class="button">حول هيوم</a>
+        <a href="products.html" class="button">المنتجات</a>
+    </div>
+
+    <h1>قائمة المنتجات</h1>
+
+    <div class="search-container">
+        <input type="text" id="search-input" class="search-input" placeholder="ابحث عن منتج..." onkeyup="searchProducts()">
+    </div>
+
+    <div class="products-container">
+        <div class="product" onclick="toggleDescription('desc1')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/s/m/smart_ir-01.jpg" alt="هيوم سمارت وحدة تحكم ريموت">
+            <h2>هيوم سمارت وحدة تحكم ريموت</h2>
+            <p class="description" id="desc1">MS-IR101-W-BK</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">الأسئلة الشائعة حول المنتج</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc2')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/b/l/bluetooth_gateway_website_-02.jpg" alt="هيوم سمارت نقطة إتصال">
+            <h2>هيوم سمارت نقطة إتصال</h2>
+            <p class="description" id="desc2">نقطة اتصال بلوتوث - أبيض.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc3')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/g/a/garage_door_controller-01.jpg" alt="هيوم سمارت وحدة تحكم جراج">
+            <h2>هيوم سمارت وحدة تحكم جراج</h2>
+            <p class="description" id="desc3">وحدة تحكم جراج واي فاي - أبيض.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc4')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/c/u/curtain_controller-01.jpg" alt="هيوم سمارت وحدة تحكم ستارة">
+            <h2>هيوم سمارت وحدة تحكم ستارة</h2>
+            <p class="description" id="desc4">وحدة تحكم ستارة واي فاي - أبيض.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc5')">
+            <img src="https://via.placeholder.com/150" alt="هيوم زجاجة ذكية">
+            <h2>هيوم - زجاجة ذكية</h2>
+            <p class="description" id="desc5">زجاجة ذكية - أسود.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc6')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/u/o/uoakitatgrsd1gp7m9nrhamefvfqa3ql604fklip.jpg" alt="هيوم لوحة تحكم ذكية 4 انش">
+            <h2>هيوم لوحة تحكم ذكية 4 انش</h2>
+            <p class="description" id="desc6">واي فاي - بلوتوث - زيجبي - 4 انش.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc7')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/m/s/ms-cps102-wzb-bk.jpg" alt="هيوم لوحة تحكم ذكية 10 انش">
+            <h2>هيوم لوحة تحكم ذكية 10 انش</h2>
+            <p class="description" id="desc7">واي فاي - بلوتوث - زيجبي - 10 انش.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc8')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/j/5/j51oxci5albuhncomyt1g2bkvvscqselyib1cpos.jpg" alt="هيوم الميزان الذكي">
+            <h2>هيوم - الميزان الذكي</h2>
+            <p class="description" id="desc8">بلوتوث - أبيض.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc9')">
+            <img src="https://via.placeholder.com/150" alt="هيوم بي او أي سويتش 8+2">
+            <h2>هيوم بي او أي سويتش 8+2</h2>
+            <p class="description" id="desc9">Port.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc10')">
+            <img src="https://via.placeholder.com/150" alt="هيوم بي او أي سويتش 4">
+            <h2>هيوم بي او أي سويتش 4</h2>
+            <p class="description" id="desc10">Port.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc11')">
+            <img src="https://via.placeholder.com/150" alt="انارة بنل 15 واط سمارت">
+            <h2>انارة بنل 15 واط سمارت - S20</h2>
+            <p class="description" id="desc11">2700K-6500K.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc12')">
+            <img src="https://via.placeholder.com/150" alt="انارة 10 واط سمارت مضاد للتوهج">
+            <h2>انارة 10 واط سمارت مضاد للتوهج - S20</h2>
+            <p class="description" id="desc12">2700K-6500K.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc13')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/m/e/me-s20-dl106-15_1_.jpg" alt="انارة 15 واط سمارت مضاد للتوهج">
+            <h2>انارة 15 واط سمارت مضاد للتوهج - S20</h2>
+            <p class="description" id="desc13">2700K-6500K.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc14')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/m/e/me-s20-zd106-10_3_.jpg" alt="انارة 10 واط سمارت مضاد للتوهج واط متحرك">
+            <h2>انارة 10 واط سمارت مضاد للتوهج واط متحرك</h2>
+            <p class="description" id="desc14">2700K-6.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc15')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/m/e/me-tl106-10-20_2_.jpg" alt="انارة مسار سمارت 10 واط">
+            <h2>انارة مسار سمارت 10 واط</h2>
+            <p class="description" id="desc15">زاوية 20 - 2800K-6000K.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc16')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/m/e/me-tl106-15-24_1_.jpg" alt="انارة مسار سمارت 15واط">
+            <h2>انارة مسار سمارت 15واط</h2>
+            <p class="description" id="desc16">زاوية 24 - 2800K-6000K.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc17')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/m/e/me-s35-pl106-15_3_.jpg" alt="انارة بنل 15 واط سمارت - S35">
+            <h2>انارة بنل 15 واط سمارت - S35</h2>
+            <p class="description" id="desc17">2700K-6500K.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc18')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/m/e/me-s35-pl106-15_3_.jpg" alt="انارة 15 واط سمارت مضاد للتوهج - S35">
+            <h2>انارة 15 واط سمارت مضاد للتوهج - S35</h2>
+            <p class="description" id="desc18">2700K-6500K.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc19')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/m/e/me-s20-zd106-10_3_.jpg" alt="انارة 10 واط سمارت مضاد للتوهج واط متحرك - S35">
+            <h2>انارة 10 واط سمارت مضاد للتوهج واط متحرك - S35</h2>
+            <p class="description" id="desc19">2700K-6.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc20')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/m/e/me-s35-dl106-10_3_.jpg" alt="انارة 10 واط سمارت مضاد للتوهج - S35">
+            <h2>انارة 10 واط سمارت مضاد للتوهج - S35</h2>
+            <p class="description" id="desc20">2700K-6500K.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc21')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/m/e/me-s35-dl106-10_3_.jpg" alt="انارة 10 واط سمارت مضاد للتوهج - S20">
+            <h2>انارة 10 واط سمارت مضاد للتوهج - S20</h2>
+            <p class="description" id="desc21">2700K-6500K.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc22')">
+            <img src="https://via.placeholder.com/150" alt="انارة مسار سمارت 6 واط">
+            <h2>انارة مسار سمارت 6 واط</h2>
+            <p class="description" id="desc22">زاوية 20 - 2800K-6000K.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc23')">
+            <img src="https://via.placeholder.com/150" alt="انارة 6 واط سمارت مضاد للتوهج - S35">
+            <h2>انارة 6 واط سمارت مضاد للتوهج - S35</h2>
+            <p class="description" id="desc23">2700K-6500K.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc24')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/t/u/tuya-12000mah_1_.jpg" alt="هيوم كاميرا طاقة شمسية 4G">
+            <h2>هيوم كاميرا طاقة شمسية 4G</h2>
+            <p class="description" id="desc24">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc25')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/m/s/ms-cam103-wh_1_1.jpg" alt="كاميرا دائري ابيض 4wire">
+            <h2>كاميرا دائري ابيض 4wire</h2>
+            <p class="description" id="desc25">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc26')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/m/s/ms-cam103-wh_1_1.jpg" alt="كاميرا مربع ابيض 4wire">
+            <h2>كاميرا مربع ابيض 4wire</h2>
+            <p class="description" id="desc26">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc27')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/m/s/ms-cam103-wh_1.jpg" alt="كاميرا دائري ابيض IP">
+            <h2>كاميرا دائري ابيض IP</h2>
+            <p class="description" id="desc27">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc28')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/m/s/ms-cam102-w.jpg" alt="كاميرا مربع ابيض IP">
+            <h2>كاميرا مربع ابيض IP</h2>
+            <p class="description" id="desc28">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc29')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/t/u/tuya-12000mah_1_.jpg" alt="هيوم كاميرا داخلية مغناطيسية">
+            <h2>هيوم كاميرا داخلية مغناطيسية</h2>
+            <p class="description" id="desc29">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc30')">
+            <img src="https://via.placeholder.com/150" alt="هيوم غطاء مفتاح نووركو بلس مجوز ابيض">
+            <h2>هيوم - غطاء مفتاح نووركو بلس مجوز ابيض</h2>
+            <p class="description" id="desc30">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc31')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/1/1/11111111-1704250583-photoroom.png-photoroom.png" alt="مفتاح شتر سمارت أبيض">
+            <h2>مفتاح شتر سمارت أبيض 10 امبير نووركو بلس- بلانو</h2>
+            <p class="description" id="desc31">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc32')">
+            <img src="https://via.placeholder.com/150" alt="غطاء مفتاح شتر سمارت أبيض">
+            <h2>غطاء مفتاح شتر سمارت أبيض 10 امبير نووركو بلس- بلا</h2>
+            <p class="description" id="desc32">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc33')">
+            <img src="https://via.placeholder.com/150" alt="غطاء مفتاح شتر سمارت أسود">
+            <h2>غطاء مفتاح شتر سمارت أسود 10 امبير نووركو بلس- بلا</h2>
+            <p class="description" id="desc33">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc34')">
+            <img src="https://via.placeholder.com/150" alt="غطاء مفتاح شتر سمارت رمادي">
+            <h2>غطاء مفتاح شتر سمارت رمادي 10 امبير نووركو بلس- بل</h2>
+            <p class="description" id="desc34">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc35')">
+            <img src="https://via.placeholder.com/150" alt="غطاء مفتاح شتر سمارت لؤلؤي">
+            <h2>غطاء مفتاح شتر سمارت لؤلؤي 10 امبير نووركو بلس- بل</h2>
+            <p class="description" id="desc35">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc36')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/d/s/dsc05666-photoroom_5.png" alt="مفتاح مفرد بلانو ذكي">
+            <h2>مفتاح مفرد بلانو ذكي</h2>
+            <p class="description" id="desc36">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc37')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/d/s/dsc05682-photoroom.png-photoroom_1.png" alt="مفتاح سخان بلانو ذكي">
+            <h2>مفتاح سخان بلانو ذكي أبيض 20 امبير</h2>
+            <p class="description" id="desc37">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc38')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/m/s/ms-wb101-b-bk1.jpg" alt="المطارة الذكية">
+            <h2>المطارة الذكية - هيوم</h2>
+            <p class="description" id="desc38">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc39')">
+            <img src="https://via.placeholder.com/150" alt="هيوم سمارت وحدة تحكم شتر">
+            <h2>هيوم سمارت وحدة تحكم شتر - واي فاي - أبيض</h2>
+            <p class="description" id="desc39">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc40')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/1/g/1g_switch-01.jpg" alt="هيوم مفتاح سمارت نووركو بلس مفرد">
+            <h2>هيوم مفتاح سمارت نووركو بلس مفرد أبيض</h2>
+            <p class="description" id="desc40">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc41')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/2/g/2g_switch-01.jpg" alt="هيوم مفتاح سمارت نووركو بلس مجوز">
+            <h2>هيوم مفتاح سمارت نووركو بلس مجوز أبيض</h2>
+            <p class="description" id="desc41">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc42')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/3/g/3g_switch-01.jpg" alt="هيوم مفتاح سمارت نووركو بلس ثلاثي">
+            <h2>هيوم مفتاح سمارت نووركو بلس ثلاثي أبيض</h2>
+            <p class="description" id="desc42">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc43')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/d/i/dimmer-01_2.jpg" alt="هيوم مفتاح سمارت ديمر">
+            <h2>هيوم مفتاح سمارت ديمر 200 واط أبيض</h2>
+            <p class="description" id="desc43">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc44')">
+            <img src="https://via.placeholder.com/150" alt="هيوم مفتاح سمارت ديمر">
+            <h2>هيوم مفتاح سمارت ديمر نووركو بلس 200 واط اسود</h2>
+            <p class="description" id="desc44">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc45')">
+            <img src="https://via.placeholder.com/150" alt="هيوم مفتاح سمارت ديمر">
+            <h2>هيوم مفتاح سمارت ديمر نووركو بلس 200 واط رمادي</h2>
+            <p class="description" id="desc45">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc46')">
+            <img src="https://via.placeholder.com/150" alt="هيوم مفتاح سمارت ديمر">
+            <h2>هيوم مفتاح سمارت ديمر نووركو بلس 200 واط لؤلؤي</h2>
+            <p class="description" id="desc46">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc47')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/l/e/led_strip_lights-03_1_.jpg" alt="هيوم سمارت إنارة شريطية 5 متر">
+            <h2>هيوم سمارت إنارة شريطية 5 متر</h2>
+            <p class="description" id="desc47">واي فاي - ملون.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc48')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/s/m/smart_plug-01.jpg" alt="هيوم سمارت توصيلة فيش">
+            <h2>هيوم سمارت توصيلة فيش</h2>
+            <p class="description" id="desc48">واي فاي - أبيض.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc49')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/p/r/projector-01.jpg" alt="هيوم جهاز عرض النجوم ذكي">
+            <h2>هيوم جهاز عرض النجوم ذكي</h2>
+            <p class="description" id="desc49">واي فاي - أبيض.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc50')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/d/s/dsc05682-photoroom.png-photoroom_1.png" alt="هيوم مفتاح سخان سمارت">
+            <h2>هيوم مفتاح سخان سمارت</h2>
+            <p class="description" id="desc50">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc51')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/a/r/aroma_diffuser_colored-04.jpg" alt="هيوم معطر هواء سمارت">
+            <h2>هيوم معطر هواء - سمارت - واي فاي</h2>
+            <p class="description" id="desc51">بني.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc52')">
+            <img src="https://via.placeholder.com/150" alt="هيوم معطر هواء سمارت">
+            <h2>هيوم معطر هواء - سمارت - واي فاي</h2>
+            <p class="description" id="desc52">أبيض.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc53')">
+            <img src="https://via.placeholder.com/150" alt="هيوم معطر هواء سمارت">
+            <h2>هيوم معطر هواء - سمارت - واي فاي</h2>
+            <p class="description" id="desc53">أسود.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc54')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/i/n/intercom_website_-01_2.jpg" alt="هيوم شاشة انتركوم نووركو 7 انش">
+            <h2>هيوم شاشة انتركوم نووركو 7 انش</h2>
+            <p class="description" id="desc54">واي فاي - 4wire.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc55')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/i/n/intercom_website_-01_2.jpg" alt="هيوم شاشة انتركوم واي فاي 10 انش">
+            <h2>هيوم شاشة انتركوم واي فاي 10 انش</h2>
+            <p class="description" id="desc55">4wire.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc56')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/i/n/intercom_website_-01_1.jpg" alt="هيوم شاشة انتركوم واي فاي 7 انش">
+            <h2>هيوم شاشة انتركوم واي فاي 7 انش</h2>
+            <p class="description" id="desc56">4wire.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc57')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/m/4/m46aumevhy83wrvkmtuabkmq2rtzsng1dtkstmb8.jpg" alt="هيوم جرس مع كميرا 2 ميقا">
+            <h2>هيوم - جرس مع كميرا 2 ميقا</h2>
+            <p class="description" id="desc57">غطاء أسود - 4wire.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc58')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/d/o/doorbell_website_-01.jpg" alt="هيوم جرس مع كميرا 2 ميقا">
+            <h2>هيوم - جرس مع كميرا 2 ميقا</h2>
+            <p class="description" id="desc58">غطاء فضي - 4wire.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc59')">
+            <img src="https://via.placeholder.com/150" alt="هيوم جرس مع كرت و كميرا 2 ميقا">
+            <h2>هيوم جرس مع كرت و كميرا 2 ميقا</h2>
+            <p class="description" id="desc59">غطاء 4wire - NFC.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc60')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/t/w/two-floor_bell_website_-01.jpg" alt="هيوم جرس دورين مع كميرا 2 ميقا">
+            <h2>هيوم - جرس دورين مع كميرا 2 ميقا</h2>
+            <p class="description" id="desc60">مع القاعدة - 4wire.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc61')">
+            <img src="https://via.placeholder.com/150" alt="هيوم جرس دور مع كميرا 2 ميقا">
+            <h2>هيوم - جرس دور مع كميرا 2 ميقا</h2>
+            <p class="description" id="desc61">أسود - 4wire.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc62')">
+            <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/i/n/intercom_website_-01_1_.jpg" alt="هيوم شاشة انتركم نووركو 10 انش">
+            <h2>هيوم شاشة انتركم نووركو 10 انش</h2>
+            <p class="description" id="desc62">4wire.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+
+        <div class="product" onclick="toggleDescription('desc63')">
+            <img src="https://via.placeholder.com/150" alt="هيوم شاشة انتركوم نووركو 7 انش">
+            <h2>هيوم - شاشة انتركوم نووركو 7 انش</h2>
+            <p class="description" id="desc63">.</p>
+            <a href="https://drive.google.com/file/d/1RyzaWYX1ZFAjmE2JqVRY7tuBx0hcFDOm/view?usp=sharing" class="btn">دليل المستخدم</a>
+            <a href="https://youtu.be/nirjoyYX_l8?feature=shared" class="btn">طريقة التركيب</a>
+        </div>
+        <div class="products-container">
+            <div class="product" onclick="toggleDescription('desc64')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/8/3/83204tm-_2_.png" alt="هيوم محطة انتركوم IP تفاعلية">
+                <h2>هيوم محطة انتركوم IP تفاعلية</h2>
+                <p class="description" id="desc64">محطة انتركوم تفاعلية تدعم بروتوكول IP.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+        
+            <div class="product" onclick="toggleDescription('desc65')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/d/s/dsc08038-.jpg" alt="هيوم جرس اتصال داخلي مع FHD كاميرا - 4wire">
+                <h2>هيوم جرس اتصال داخلي مع FHD كاميرا - 4wire</h2>
+                <p class="description" id="desc65">جرس اتصال داخلي مزود بكاميرا FHD.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+        
+            <div class="product" onclick="toggleDescription('desc66')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/i/y/iy3507voodv6pzbp8tj1zo1sdmlkxzzfcsfzlse8.jpg" alt="هيوم - جرس الاتصال الداخلي مع كاميرا - IP">
+                <h2>هيوم - جرس الاتصال الداخلي مع كاميرا - IP</h2>
+                <p class="description" id="desc66">جرس اتصال داخلي يدعم بروتوكول IP.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+        
+            <div class="product" onclick="toggleDescription('desc67')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/i/y/iy3507voodv6pzbp8tj1zo1sdmlkxzzfcsfzlse8_1.jpg" alt="هيوم - جرس الاتصال الداخلي مع الكاميرا - دورين - IP">
+                <h2>هيوم - جرس الاتصال الداخلي مع الكاميرا - دورين - IP</h2>
+                <p class="description" id="desc67">جرس اتصال داخلي مزود بكاميرا لدورين.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+        
+            <div class="product" onclick="toggleDescription('desc68')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/8/3/83111tm-an_2_.jpg" alt="هيوم شاشة انتركوم اندرويد- 10 انش - IP">
+                <h2>هيوم شاشة انتركوم اندرويد - 10 انش - IP</h2>
+                <p class="description" id="desc68">شاشة انتركوم تعمل بنظام أندرويد بحجم 10 انش.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+        
+            <div class="product" onclick="toggleDescription('desc69')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/a/y/ay0nryic9qgitw3nhr93j3bzzfbv6yiimdnvwcw3.jpg" alt="هيوم قفل ماسا الذكي - بلوتوث - اسود">
+                <h2>هيوم قفل ماسا الذكي - بلوتوث - اسود</h2>
+                <p class="description" id="desc69">قفل ذكي يعمل بتقنية البلوتوث باللون الأسود.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+        
+            <div class="product" onclick="toggleDescription('desc70')">
+                <img src="https://via.placeholder.com/150" alt="هيوم قفل ماسا الذكي - بلوتوث - فضي">
+                <h2>هيوم قفل ماسا الذكي - بلوتوث - فضي</h2>
+                <p class="description" id="desc70">قفل ذكي يعمل بتقنية البلوتوث باللون الفضي.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+        
+            <div class="product" onclick="toggleDescription('desc71')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/s/t/steel_door_lock_website_-01.jpg" alt="هيوم قفل باب الحديد الذكي - بلوتوث">
+                <h2>هيوم قفل باب الحديد الذكي - بلوتوث</h2>
+                <p class="description" id="desc71">قفل ذكي لباب الحديد يعمل بتقنية البلوتوث.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+        
+            <div class="product" onclick="toggleDescription('desc72')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/g/l/glass_door_lock_website_-02.jpg" alt="هيوم قفل باب الزجاج الذكي - بلوتوث">
+                <h2>هيوم قفل باب الزجاج الذكي - بلوتوث</h2>
+                <p class="description" id="desc72">قفل ذكي لباب الزجاج يعمل بتقنية البلوتوث.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+        
+            <div class="product" onclick="toggleDescription('desc73')">
+                <img src="https://via.placeholder.com/150" alt="هيوم قفل باب خشبي الذكي - بلوتوث - مقبض طولي">
+                <h2>هيوم قفل باب خشبي الذكي - بلوتوث - مقبض طولي</h2>
+                <p class="description" id="desc73">قفل ذكي لباب خشبي بمقبض طولي يعمل بتقنية البلوتوث.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+        
+            <div class="product" onclick="toggleDescription('desc74')">
+                <img src="https://via.placeholder.com/150" alt="هيوم قفل باب خشبي الذكي - بلوتوث - مقبض افقي">
+                <h2>هيوم قفل باب خشبي الذكي - بلوتوث - مقبض افقي</h2>
+                <p class="description" id="desc74">قفل ذكي لباب خشبي بمقبض أفقي يعمل بتقنية البلوتوث.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+        
+            <div class="product" onclick="toggleDescription('desc75')">
+                <img src="https://via.placeholder.com/150" alt="هيوم سمارت كاشف دخان - زيجبي- أبيض">
+                <h2>هيوم سمارت كاشف دخان - زيجبي - أبيض</h2>
+                <p class="description" id="desc75">كاشف دخان ذكي يعمل بتقنية زيجبي.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+        
+            <div class="product" onclick="toggleDescription('desc76')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/c/u/curva_door_lock_website_-03.jpg" alt="هيوم - سمارت قفل باب كيرفا - زيجبي - أسود">
+                <h2>هيوم - سمارت قفل باب كيرفا - زيجبي - أسود</h2>
+                <p class="description" id="desc76">قفل ذكي لباب كيرفا يعمل بتقنية زيجبي باللون الأسود.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+        
+            <div class="product" onclick="toggleDescription('desc77')">
+                <img src="https://via.placeholder.com/150" alt="هيوم سمارت قفل باب كيرفا - بلوتوث - فضي">
+                <h2>هيوم سمارت قفل باب كيرفا - بلوتوث - فضي</h2>
+                <p class="description" id="desc77">قفل ذكي لباب كيرفا يعمل بتقنية البلوتوث باللون الفضي.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+        
+            <div class="product" onclick="toggleDescription('desc78')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/c/u/curva_door_lock_website_-03.jpg" alt="هيوم سمارت قفل باب كيرفا - بلوتوث - أسود">
+                <h2>هيوم سمارت قفل باب كيرفا - بلوتوث - أسود</h2>
+                <p class="description" id="desc78">قفل ذكي لباب كيرفا يعمل بتقنية البلوتوث باللون الأسود.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+        
+            <div class="product" onclick="toggleDescription('desc79')">
+                <img src="https://via.placeholder.com/150" alt="هيوم سمارت جهاز إنذار - واي فاي - أبيض">
+                <h2>هيوم سمارت جهاز إنذار - واي فاي - أبيض</h2>
+                <p class="description" id="desc1">جهاز إنذار ذكي يعمل عبر الواي فاي.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+            
+            <div class="product" onclick="toggleDescription('desc80')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/s/m/smoke_detector-05.jpg">
+                <h2>هيوم سمارت كاشف دخان - واي فاي - أبيض</h2>
+                <p class="description" id="desc2">كاشف دخان ذكي يعمل عبر الواي فاي.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+            
+            <div class="product" onclick="toggleDescription('desc81')">
+                <img srcيوم - كيلون قفل 30 مم - رمادي>
+                <h2>هيوم - كيلون قفل 30 مم - رمادي</h2>
+                <p class="description" id="desc3">كيلون قفل بحجم 30 مم، بلون رمادي.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+            
+            <div class="product" onclick="toggleDescription('desc82')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/b/u/bulb_rgb-04.jpg" alt="هيوم - المصباح الذكي - واي فاي - ملون">
+                <h2>هيوم - المصباح الذكي - واي فاي - ملون</h2>
+                <p class="description" id="desc4">مصباح ذكي ملون يعمل عبر الواي فاي.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+            
+            <div class="product" onclick="toggleDescription('desc83')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/b/u/bulb_wh-04.jpg" alt="هيوم - المصباح الذكي - واي فاي - أبيض">
+                <h2>هيوم - المصباح الذكي - واي فاي - أبيض</h2>
+                <p class="description" id="desc5">مصباح ذكي أبيض يعمل عبر الواي فاي.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+            
+            <div class="product" onclick="toggleDescription('desc84')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/s/m/smart_wake_up_light_pro-01.jpg" alt="هيوم - إضاءة الاسترخاء الذكية - واي فاي">
+                <h2>هيوم - إضاءة الاسترخاء الذكية - واي فاي</h2>
+                <p class="description" id="desc6">إضاءة ذكية للاسترخاء تعمل عبر الواي فاي.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+            
+            <div class="product" onclick="toggleDescription('desc85')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/1/b/1bat6ne2a0pvqvmhpynvip6sowoj3fobpq9cl9pv.jpg" alt="هيوم - الاباجورة الذكية - واي فاي">
+                <h2>هيوم - الاباجورة الذكية - واي فاي</h2>
+                <p class="description" id="desc7">أباجورة ذكية تعمل عبر الواي فاي.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+            
+            <div class="product" onclick="toggleDescription('desc86')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/f/a/fairy_lights-01.jpg" alt="هيوم - إنارة الحفلات الذكية - واي فاي">
+                <h2>هيوم - إنارة الحفلات الذكية - واي فاي</h2>
+                <p class="description" id="desc8">إنارة ذكية مناسبة للحفلات تعمل عبر الواي فاي.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+            
+            <div class="product" onclick="toggleDescription('desc87')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/m/s/ms-sg101-b-rgb.png" alt="هيوم - انارة شمسية ملونة - بلوتوث">
+                <h2>هيوم - انارة شمسية ملونة - بلوتوث</h2>
+                <p class="description" id="desc9">إنارة شمسية ملونة تعمل عبر بلوتوث.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+            
+            <div class="product" onclick="toggleDescription('desc88')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/s/m/smart_ambient_bar_light-02.jpg" alt="هيوم - إنارة سينمائية ذكية - واي فاي">
+                <h2>هيوم - إنارة سينمائية ذكية - واي فاي</h2>
+                <p class="description" id="desc10">إنارة سينمائية ذكية تعمل عبر الواي فاي.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+            
+            <div class="product" onclick="toggleDescription('desc89')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/t/8/t8_copy_1_.png" alt="هيوم - مثلث تشكيلي ذكي - واي فاي">
+                <h2>هيوم - مثلث تشكيلي ذكي - واي فاي</h2>
+                <p class="description" id="desc11">مثلث تشكيلي ذكي يعمل عبر الواي فاي.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+            
+            <div class="product" onclick="toggleDescription('desc90')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/m/s/ms-tp101-w-rgb.png" alt="هيوم - مثلث تشكيلي ذكي ( قطع اضافية ) - واي فاي">
+                <h2>هيوم - مثلث تشكيلي ذكي ( قطع اضافية ) - واي فاي</h2>
+                <p class="description" id="desc12">قطع إضافية للمثلث التشكيلي الذكي تعمل عبر الواي فاي.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+            
+            <div class="product" onclick="toggleDescription('desc91')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/d/s/dsc02947-photoroom.png" alt="هيوم - وحدة انارة سمارت k 2700 - 6500 k">
+                <h2>هيوم - وحدة انارة سمارت k 2700 - 6500 k</h2>
+                <p class="description" id="desc13">وحدة إنارة سمارت تتراوح بين 2700 و 6500 كلفن.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+            
+            <div class="product" onclick="toggleDescription('desc92')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/1/0/100.jpg" alt="هيوم منقي هواء بيور 100 متر مربع - واي فاي - أبيض">
+                <h2>هيوم منقي هواء بيور 100 متر مربع - واي فاي - أبيض</h2>
+                <p class="description" id="desc14">منقي هواء بيور يغطي مساحة 100 متر مربع، يعمل عبر الواي فاي.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+            
+            <div class="product" onclick="toggleDescription('desc93')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/i/o/iogq8sprzrvweba7hzsayknmrezh82tfnvcpeizi_1__1_1_11_1.jpg" alt="هيوم - فلتر منقي هواء بيور 100">
+                <h2>هيوم - فلتر منقي هواء بيور 100</h2>
+                <p class="description" id="desc15">فلتر خاص لمنقي الهواء بيور 100.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+            
+            <div class="product" onclick="toggleDescription('desc94')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/j/5/j576bfeh6s5hkiymff2wsq03qp37wyeqgv4uo3xb.jpg" alt="هيوم - منقي هواء بيور 70 متر مربع - واي فاي - أبيض">
+                <h2>هيوم - منقي هواء بيور 70 متر مربع - واي فاي - أبيض</h2>
+                <p class="description" id="desc16">منقي هواء بيور يغطي مساحة 70 متر مربع، يعمل عبر الواي فاي.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+            
+            <div class="product" onclick="toggleDescription('desc95')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/z/x/zxnnayqzfwpgtga3upknxizzo78fgmioa1xinniz_1.jpg" alt="هيوم - منقي هواء بيور 50 متر مربع - واي فاي - أبيض">
+                <h2>هيوم - منقي هواء بيور 50 متر مربع - واي فاي - أبيض</h2>
+                <p class="description" id="desc17">منقي هواء بيور يغطي مساحة 50 متر مربع، يعمل عبر الواي فاي.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+            
+            <div class="product" onclick="toggleDescription('desc96')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/i/o/iogq8sprzrvweba7hzsayknmrezh82tfnvcpeizi_1__1_1_11_1.jpg" alt="هيوم - فلتر منقي هواء بيور 50">
+                <h2>هيوم - فلتر منقي هواء بيور 50</h2>
+                <p class="description" id="desc18">فلتر خاص لمنقي الهواء بيور 50.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+            
+            <div class="product" onclick="toggleDescription('desc97')">
+                <img src="https://meshkati.sa/media/catalog/product/cache/3d6fa0099921c1f018e752651beef9ef/x/w/xw7wfq7bpm45ox1haj8w3q0r0pd3p1edmsifj242.jpg" alt="هيوم - منقي هواء بيور 30 - واي فاي - أبيض">
+                <h2>هيوم - منقي هواء بيور 30 - واي فاي - أبيض</h2>
+                <p class="description" id="desc19">منقي هواء بيور يغطي مساحة 30 متر مربع، يعمل عبر الواي فاي.</p>
+                <a href="#" class="btn">دليل المستخدم</a>
+                <a href="#" class="btn">طريقة التركيب</a>
+            </div>
+            
+        
+        
+        </div>
+        
+    <script>
+        function toggleDescription(descId) {
+            const description = document.getElementById(descId);
+            description.style.display = description.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+
+</div>
+
+                <a href="index.html" class="button">عودة إلى الصفحة الرئيسية</a>
+
+    
+</div>
+
+    
+</body>
+</html>
+
+
+
